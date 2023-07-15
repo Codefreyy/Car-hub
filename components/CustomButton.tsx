@@ -1,14 +1,21 @@
 "use client";
+import { CustomButtonProps } from "@/types";
 import Image from "next/image";
 
-function CustomButton() {
+function CustomButton({
+  title,
+  containerStyles,
+  handleClick,
+}: CustomButtonProps) {
   return (
     <button
       disabled={false}
       type={"button"}
-      className={`custom-btn`}
+      className={`custom-btn ${containerStyles}`}
       onClick={() => {}}
-    ></button>
+    >
+      <span className={`flex-1`}>{title}</span>
+    </button>
   );
 }
 
