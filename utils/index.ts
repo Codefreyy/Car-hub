@@ -1,3 +1,5 @@
+import { CarProps } from "@/types";
+
 export async function fetchCars() {
     const headers = {
         'X-RapidAPI-Key': '2b9022dc01msh12cb109a71ca606p1c85dfjsn33366ca68ebe',
@@ -24,3 +26,20 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 
     return rentalRatePerDay.toFixed(0);
 };
+
+export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+    const url = new URL('https://cdn.imagin.studio/getimage')
+    const { make, year, model } = car
+
+    url.searchParams.append('customer', 'hrjavascript-mastery')
+    url.searchParams.append('make', make)
+    url.searchParams.append('modelFamily', model.split(' ')[0])
+    url.searchParams.append('zoomType', "fullscreen")
+    url.searchParams.append('modelYear', `${year}`)
+    url.searchParams.append('angle', `${angle}`)
+    console.log('url', url.href);
+
+    // return `${url.href}` the car API has expired
+    return '/hero.png'
+
+}
