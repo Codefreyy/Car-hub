@@ -1,11 +1,13 @@
-import { CarProps } from "@/types";
+import { CarProps, FilterProps } from "@/types";
 
-export async function fetchCars() {
+export async function fetchCars(filters: FilterProps) {
+    const { manufacturer, year, model, limit, fuel } = filters;
+
     const headers = {
         'X-RapidAPI-Key': '2b9022dc01msh12cb109a71ca606p1c85dfjsn33366ca68ebe',
         'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
     }
-    const response = await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=carrera', {
+    const response = await fetch(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`, {
         headers: headers
     });
     const res = await response.json()
@@ -37,9 +39,9 @@ export const generateCarImageUrl = (car: CarProps, angle?: string) => {
     url.searchParams.append('zoomType', "fullscreen")
     url.searchParams.append('modelYear', `${year}`)
     url.searchParams.append('angle', `${angle}`)
-    console.log('url', url.href);
 
     // return `${url.href}` the car API has expired
     return '/hero.png'
 
 }
+

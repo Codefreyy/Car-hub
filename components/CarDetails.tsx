@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 
 import { Dialog, Transition } from "@headlessui/react";
+import { generateCarImageUrl } from "@/utils";
 
 function CarDetails({ isOpen, closeModal, car }: CarDetailsProps) {
   return (
@@ -59,24 +60,24 @@ function CarDetails({ isOpen, closeModal, car }: CarDetailsProps) {
                     <div className="flex gap-3">
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
-                          alt="close"
+                          src={generateCarImageUrl(car, "29")}
+                          alt="car"
                           fill
                           className="object-contain"
                         />
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
-                          alt="close"
+                          src={generateCarImageUrl(car, "33")}
+                          alt="car"
                           fill
                           className="object-contain"
                         />
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src="/hero.png"
-                          alt="close"
+                          src={generateCarImageUrl(car, "13")}
+                          alt="car"
                           fill
                           className="object-contain"
                         />
