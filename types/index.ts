@@ -10,6 +10,11 @@ export interface CustomButtonProps {
     isDisabled?: boolean
 }
 
+export interface ShowMoreProps {
+    pageNumber: number;
+    isNext: boolean
+}
+
 export interface OptionProps {
     title: string;
     value: string
